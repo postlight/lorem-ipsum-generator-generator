@@ -1,0 +1,14 @@
+{
+  "name": "generate-ipsum",
+  "version": "1.0.0",
+  "description": "generate lorem ipsum from a given data table",
+  "main": "generate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Drew Bell",
+  "license": "ISC",
+  "dependencies": {
+    "markov": "git+https://git@github.com/adampash/node-markov.git"
+  }
+}

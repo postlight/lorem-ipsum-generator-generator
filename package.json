@@ -1,0 +1,27 @@
+{
+  "name": "lorem-ipsum-generator-generator",
+  "version": "1.0.0",
+  "description": "Generate a lorem ipsum generator site using Mercury Parser",
+  "main": "index.js",
+  "bin": {
+    "lorem-ipsum-generator-generator": "./cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/droob/lorem-ipsum-generator-generator.git"
+  },
+  "author": "Drew Bell",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/droob/lorem-ipsum-generator-generator/issues"
+  },
+  "homepage": "https://github.com/droob/lorem-ipsum-generator-generator#readme",
+  "dependencies": {
+    "@postlight/mercury-parser": "^2.0.0",
+    "markov": "git+https://git@github.com/adampash/node-markov.git",
+    "yargs-parser": "^13.0.0"
+  }
+}
