@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta content='text/html; charset=UTF-8'>
+    <title>My Ipsum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="Generate lorem ipsum based on text found by Mercury Parser. A micro project from your friends at Postlight.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="My Ipsum">
+    <meta name="twitter:description" content="Generate lorem ipsum text based on text found by Mercury Parser. A micro project from your friends at Postlight.">
+    <!-- Edit the following tag to point to your deployed site's URL.
+    <meta property="og:url" content="https://fyreipsum.com" />
+    -->
+    <meta property="og:title" content="My Ipsum" />
+    <meta property="og:description" content="Generate lorem ipsum text based on text found by Mercury Parser. A micro project from your friends at Postlight." />
+    <!-- Add a preview image at /preview.png and edit the following tags to point to its full URL.
+    <meta name="twitter:image" content="https://YOUR_URL_HERE/preview.png">
+    <meta property="og:image" content="https://fyreipsum.com/preview.png" />
+    -->
+
+    <style>
+      :root {
+       --primary-color: #facade;
+      }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        padding: 74px 0 0;
+        box-sizing: border-box;
+        background: var(--primary-color);
+        background-image: url('https://placekitten.com/800/600');
+        background-attachment: fixed;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #logo, #h1 { flex-shrink: 0; display: block; margin-bottom: 38px; }
+      body, input { font-family:-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+      input::-webkit-inner-spin-button {
+        opacity: 1;
+      }
+      #subhead {
+        color: white;
+        max-width: 90%;
+        margin-bottom: 38px;
+        text-align: center;
+        font-size: 16px;
+        line-height: 19px;
+        flex-shrink: 0;
+      }
+      p {
+        max-width: 40em;
+        margin: 1em auto;
+        text-align: left;
+        font-size: 14px;
+        line-height: 18px;
+      }
+      p:last-child {
+        margin-bottom: 0;
+      }
+      .stretchy {
+        flex: 1;
+        margin-bottom: 74px;
+      }
+      main {
+        position: relative;
+        padding: 24px;
+        margin: 0 auto;
+        background-color: white;
+        background-clip: padding-box;
+        border: 4px solid rgba(255,255,255,0.2);
+        border-radius: 4px;
+        box-sizing: border-box;
+        width: 90%;
+        height: 443px;
+        overflow: hidden;
+      }
+      main.expanded {
+        height: auto;
+        padding-bottom: 100px;
+      }
+      main.expanded #expand {
+        transform: rotate(180deg);
+      }
+      main.expanded #ipsum::after {
+        display: none;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 18px;
+        margin-bottom: 21px;
+        border-bottom: 1px solid var(--primary-color); 
+        text-align: left;
+      }
+      form {
+        display: flex;
+        align-items: center;
+      }
+      #length {
+        padding: 10px;
+        margin-right: 9px;
+        width: 68px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background: #eee;
+        font-size: 24px;
+        line-height: 29px;
+        box-sizing: border-box;
+        text-align: center;
+      }
+      label {
+        font-size: 12px;
+        line-height: 14px;
+        color: rgba(0,0,0,0.5)
+      }
+      label strong {
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 16px;
+        color: black;
+        margin-bottom: 3px;
+      }
+      #refresh, #expand {
+        border: 0;
+        background: transparent;
+        padding: 0;
+      }
+      #refresh svg, #expand svg {
+        fill: var(--primary-color);
+      }
+      #ipsum::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 170px;
+        background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #FFFFFF 100%);
+      }
+      #copy {
+        background: var(--primary-color);
+        border: 0;
+        padding: 15px 27px;
+        color: white;
+        box-shadow: inset 0 -1px 5px 0 rgba(172,172,172,0.5);
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 19px;
+        position: absolute;
+        left: 50%;
+        bottom: 24px;
+        transform: translateX(-50%);
+      }
+      #copy:hover {
+        cursor: pointer;
+      }
+      footer {
+        width: 100%;
+        background: #262534;
+        padding: 74px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-shrink: 0;
+        box-sizing: border-box;
+      }
+      footer p {
+        margin: 0;
+        color: #828282;
+        font-size: 16px;
+        line-height: 32px;
+      }
+      a {
+        color: white;
+      }
+      .spinner {
+        margin: 1em auto;
+        width: 30px;
+        text-align: center;
+      }
+      .spinner > div {
+        width: 9px;
+        height: 9px;
+        background-color: #333;
+        border-radius: 100%;
+        display: inline-block;
+        animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+      }
+      .spinner .bounce1 {
+        animation-delay: -0.32s;
+      }
+      .spinner .bounce2 {
+        animation-delay: -0.16s;
+      }
+      @keyframes sk-bouncedelay {
+        0%, 80%, 100% {
+          transform: scale(0);
+        } 40% {
+          transform: scale(1.0);
+        }
+      }
+      @media (min-width: 768px) {
+        #expand, #refresh {
+          margin-left: 13px;
+        }
+        main {
+          width: 506px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <img id="logo" src="https://placekitten.com/300/300" width="150" height="150" alt="" />
+    <h1 id="h1">My Ipsum</h1>
+    <p id="subhead">Lorem ipsum generated by <a href="https://mercury.postlight.com/web-parser/">Mercury Parser</a>.</p>
+    <div class="stretchy">
+      <main>
+        <header>
+          <form id="form" action="">
+            <input id="length" type=number value=4 min=1 max=9 />
+            <label for="length">
+              <strong>Paragraphs</strong>
+              <span id="wordCount">100</span> words
+            </label>
+          </form>
+          <div>
+            <button id="expand" aria-label="Expand view">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+            </button>
+            <button id="refresh" aria-label="Refresh">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+            </button>
+          </div>
+        </header>
+        <div id="spinner" class="spinner">
+          <div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div>
+        </div>
+        <div id="ipsum" style="display: none"><p>...</p></div>
+        <button id="copy">Copy to clipboard</button>
+      </main>
+    </div>
+    <footer>
+      <p>A micro project from your friends at</p>
+      <a href="https://postlight.com/labs">
+        <img id="logo" src="postlight-labs.gif" alt="Postlight Labs" width=204 height=45 />
+      </a>
+    </footer>
+    <script>
+      var spinner = document.getElementById('spinner')
+      var ipsum   = document.getElementById('ipsum')
+      var getQueryString = function (field) {
+	      var reg = new RegExp('[?&]' + field + '=([^&#]*)', 'i')
+	      var string = reg.exec(location.href)
+	      return string ? string[1] : null
+      }
+      var fetchWords = function(length) {
+        spinner.style.display = 'block'
+        ipsum.style.display   = 'none'
+        document.getElementsByTagName('main')[0].classList.remove('expanded')
+        fetch(`/.netlify/functions/generate?paragraphs=${length || 4}`)
+          .then(function (res) { return res.json() })
+          .then(function (data) {
+            while (ipsum.firstChild) {
+              ipsum.removeChild(ipsum.firstChild)
+            }
+            data.paragraphs.forEach(p => {
+              var node = document.createElement('p')
+              node.innerText = p
+              ipsum.appendChild(node)
+            })
+            var regex = /\s+/gi
+            document.getElementById('wordCount').innerText = ipsum.innerText.trim().replace(regex, ' ').split(' ').length
+            spinner.style.display = 'none'
+            ipsum.style.display   = 'block'
+          })
+          .catch(function (error) {
+            console.error(error)
+          })
+      }
+      var fetchMore = function(e) {
+        e.preventDefault()
+        var userLength = document.getElementById('length').value
+        fetchWords(userLength)
+      }
+      var toggleExpanded = function() {
+        document.getElementsByTagName('main')[0].classList.toggle('expanded')
+      }
+      fetchWords(getQueryString('paragraphs'))
+      document.getElementById('length').value = getQueryString('paragraphs') || '4';
+
+      document.getElementById('form').onsubmit   = fetchMore
+      document.getElementById('length').onchange = fetchMore
+      document.getElementById('refresh').onclick = fetchMore
+      document.getElementById('expand').onclick  = toggleExpanded
+      document.getElementById('copy').addEventListener('click', function(event) {
+        var range = document.createRange()
+        range.selectNode(document.getElementById('ipsum'))
+        window.getSelection().addRange(range)
+
+        try {
+          var successful = document.execCommand('copy')
+          if (successful) {
+            document.getElementById('copy').innerText = "Copied!"
+            setTimeout(() => document.getElementById('copy').innerText = "Copy to clipboard", 2000)
+          }
+        } catch(err) {
+          console.log('Oops, unable to copy.')
+        }
+
+        window.getSelection().removeAllRanges();
+      });
+    </script>
+  </body>
+</html>

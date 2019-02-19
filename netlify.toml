@@ -1,0 +1,3 @@
+[build]
+  functions = "functions-build"
+  command = "npm run prebuild"
