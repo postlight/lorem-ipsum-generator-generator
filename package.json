@@ -26,6 +26,7 @@
   "dependencies": {
     "@postlight/mercury-parser": "^2.0.0",
     "markov": "git+https://git@github.com/adampash/node-markov.git",
+    "slugify": "^1.3.4",
     "yargs-parser": "^13.0.0"
   }
 }
