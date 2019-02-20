@@ -24,7 +24,7 @@ $ npx lorem-ipsum-generator-generator \
   --project-name "My Ipsum" \
   --logo https://placekitten.com/300/300 \
   --background https://placekitten.com/800/600 \
-  --accent #facade
+  --accent "#facade"
 ```
 
 The generator will create a folder for your project, install the necessary node
