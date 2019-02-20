@@ -21,7 +21,7 @@ or
 $ npx lorem-ipsum-generator-generator \
   http://example.com \
   https://postlight.com/trackchanges/mercury-goes-open-source \
-  --name "My Ipsum" \
+  --project-name "My Ipsum" \
   --logo https://placekitten.com/300/300 \
   --background https://placekitten.com/800/600 \
   --accent #facade
