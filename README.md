@@ -28,7 +28,7 @@ $ npx lorem-ipsum-generator-generator \
 ```
 
 The generator will create a folder for your project, install the necessary node
-packages, and kick off `netlify-cli` to deploy it. The first time you use the
+packages, and kick off `netlify-cli` to deploy it to the web. The first time you use the
 generator, you'll be asked to authorize it to connect to your Netlify account.
 
 If you're not connecting it to an existing Netlify site, feel free to accept all
@@ -60,5 +60,5 @@ The Netlify function that generates the lorem ipsum text is created in the
 `functions/generate` folder. It's small and easy to change, if you want different
 defaults!
 
-To re-deploy, run `npm run deploy`.
+To re-deploy after your customizations, run `npm run deploy`.
 
