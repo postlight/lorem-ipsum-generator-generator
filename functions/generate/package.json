@@ -9,6 +9,6 @@
   "author": "Drew Bell",
   "license": "ISC",
   "dependencies": {
-    "markov": "git+https://git@github.com/adampash/node-markov.git"
+    "markov": "git+https://git@github.com/postlight/node-markov.git"
   }
 }
