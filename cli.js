@@ -1,22 +1,31 @@
 #! /usr/bin/env/node
 
-var fs      = require("fs")
-var spawn   = require("cross-spawn")
-var path    = require("path")
-var Mercury = require("@postlight/mercury-parser")
-var markov  = require("markov")
-var slugify = require("slugify")
-var argv    = require("yargs-parser")(process.argv.slice(2), { string: true })
+var fs        = require("fs")
+var spawn     = require("cross-spawn")
+var path      = require("path")
+var Mercury   = require("@postlight/mercury-parser")
+var markov    = require("markov")
+var slugify   = require("slugify")
+var commander = require("commander")
 
-if (!argv.name) {
+var program = new commander.Command('lorem-ipsum-generator-generator')
+  .version("1.0.0")
+  .usage('<urls ...> [options]')
+  .option('-n, --name [name]')
+  .option('-l, --logo [logo]')
+  .option('-b, --background [background]')
+  .option('-a, --accent [accent]')
+  .parse(process.argv)
+
+if (!program.name) {
   console.log("A project name is required.")
   process.exit()
 }
 
-var name = slugify(argv.name, {lower: true})
+var name = slugify(program.name, {lower: true})
 var root = path.resolve(name)
 var m    = markov(2)
-var urls = argv._
+var urls = program.args
 
 if (!fs.existsSync(root)){
   fs.mkdirSync(root);
@@ -54,15 +63,15 @@ Promise.all(urls.map(u => {
 })).then(res => { writeDb(res.join('\n')) })
 
 var index = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8')
-var updatedIndex = index.replace(/My Ipsum/g, argv.name)
-if (argv.logo) {
-  updatedIndex = updatedIndex.replace(/https://placekitten.com/300/300/g, argv.logo)
+var updatedIndex = index.replace(/My Ipsum/g, program.name)
+if (program.logo) {
+  updatedIndex = updatedIndex.replace(/https://placekitten.com/300/300/g, program.logo)
 }
-if (argv.background) {
-  updatedIndex = updatedIndex.replace(/https://placekitten.com/800/600/g, argv.background)
+if (program.background) {
+  updatedIndex = updatedIndex.replace(/https://placekitten.com/800/600/g, program.background)
 }
-if (argv.accent) {
-  updatedIndex = updatedIndex.replace(/#facade/g, argv.accent)
+if (program.accent) {
+  updatedIndex = updatedIndex.replace(/#facade/g, program.accent)
 }
 fs.writeFileSync(path.join(root, 'index.html'), updatedIndex)
 
