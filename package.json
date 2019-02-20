@@ -7,10 +7,6 @@
     "lorem-ipsum-generator-generator": "./cli.js"
   },
   "scripts": {
-    "clean": "rm -rf functions-build && mkdir functions-build",
-    "zip": "cd functions/generate && npm install && zip -r generate.zip *",
-    "postzip": "mv functions/generate/generate.zip functions-build",
-    "prebuild": "npm run clean && npm run zip",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
