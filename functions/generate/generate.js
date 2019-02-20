@@ -3,9 +3,7 @@ var fs = require("fs")
 var markov = require("markov")
 var m = markov()
 var db = JSON.parse(
-  fs.readFileSync(
-    path.resolve(__dirname, 'db.json'), 'utf8'
-  )
+  fs.readFileSync('./db.json', 'utf8')
 )
 
 exports.handler = function(event, context, callback) {

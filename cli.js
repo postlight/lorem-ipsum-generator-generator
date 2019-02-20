@@ -1,6 +1,7 @@
 #! /usr/bin/env/node
 
 var fs      = require("fs")
+var spawn   = require("cross-spawn")
 var path    = require("path")
 var Mercury = require("@postlight/mercury-parser")
 var markov  = require("markov")
@@ -23,7 +24,6 @@ if (!fs.existsSync(root)){
 
 fs.mkdirSync(path.join(root, 'functions'))
 fs.mkdirSync(path.join(root, 'functions/generate'))
-fs.mkdirSync(path.join(root, 'functions-build'))
 
 var files = [
   'netlify.toml',
@@ -31,19 +31,18 @@ var files = [
   'functions/generate/generate.js',
   'functions/generate/package.json'
 ]
-files.forEach(f => fs.createReadStream(path.join(__dirname, f))
-  .pipe(fs.createWriteStream(path.join(root, f))))
+files.forEach(f => fs.copyFileSync(path.join(__dirname, f), path.join(root, f)))
 
 var packageJson = {
   name,
   version: '1.0.0',
   private: true,
-  description: 'A lorem ipsum generator based on text found by Mercyr Parser',
+  description: 'A lorem ipsum generator based on text found by Mercury Parser',
   scripts: {
-    clean: 'rm -rf functions-build && mkdir functions-build',
-    zip: 'cd functions/generate && npm install && zip -r generate.zip *',
-    postzip: 'mv functions/generate/generate.zip functions-build',
-    prebuild: 'npm run clean && npm run zip'
+    deploy: './node_modules/.bin/netlify deploy --prod --open --functions functions'
+  },
+  dependencies: {
+    "netlify-cli": "2.7.0"
   }
 }
 fs.writeFileSync(path.join(root, 'package.json'), JSON.stringify(packageJson, null, 2))
@@ -54,22 +53,31 @@ Promise.all(urls.map(u => {
   })
 })).then(res => { writeDb(res.join('\n')) })
 
-fs.readFile(path.join(__dirname, 'index.html'), 'utf8', (err, data) => {
-  if (err) { console.error(err); process.exit(1); }
+var index = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8')
+var updatedIndex = index.replace(/My Ipsum/g, argv.name)
+if (argv.logo) {
+  updatedIndex = updatedIndex.replace(/https://placekitten.com/300/300/g, argv.logo)
+}
+if (argv.background) {
+  updatedIndex = updatedIndex.replace(/https://placekitten.com/800/600/g, argv.background)
+}
+if (argv.accent) {
+  updatedIndex = updatedIndex.replace(/#facade/g, argv.accent)
+}
+fs.writeFileSync(path.join(root, 'index.html'), updatedIndex)
 
-  var updatedIndex = data.replace(/My Ipsum/g, argv.name)
-  if (argv.logo) {
-    updatedIndex = updatedIndex.replace(/https://placekitten.com/300/300/g, argv.logo)
-  }
-  if (argv.background) {
-    updatedIndex = updatedIndex.replace(/https://placekitten.com/800/600/g, argv.background)
-  }
-  if (argv.accent) {
-    updatedIndex = updatedIndex.replace(/#facade/g, argv.accent)
-  }
-  console.log(updatedIndex)
-  fs.writeFileSync(path.join(root, 'index.html'), updatedIndex)
-})
+process.chdir(root)
+var npmInstall = spawn.sync('npm', ['install'], { stdio: 'inherit' })
+
+process.chdir(path.join(root, 'functions/generate'))
+var npmInstall = spawn.sync('npm', ['install'], { stdio: 'inherit' })
+
+process.chdir(root)
+var netlifyDeploy = spawn.sync(
+  './node_modules/.bin/netlify',
+  ['deploy', '--prod', '--open', '--functions', 'functions'],
+  { stdio: 'inherit' }
+)
 
 function writeDb(corpus) {
   m.seed(corpus, () => {
