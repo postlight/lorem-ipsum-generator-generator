@@ -42,7 +42,7 @@ var packageJson = {
     deploy: './node_modules/.bin/netlify deploy --prod --open --functions functions'
   },
   dependencies: {
-    "netlify-cli": "2.7.0"
+    "netlify-cli": "2.7.4"
   }
 }
 fs.writeFileSync(path.join(root, 'package.json'), JSON.stringify(packageJson, null, 2))
