@@ -2,9 +2,7 @@ var path = require("path")
 var fs = require("fs")
 var markov = require("markov")
 var m = markov()
-var db = JSON.parse(
-  fs.readFileSync('./db.json', 'utf8')
-)
+var db = require(path.resolve(process.cwd(), 'db.json'))
 
 exports.handler = function(event, context, callback) {
   m.setDb(db);

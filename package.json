@@ -1,6 +1,6 @@
 {
   "name": "@droob/lorem-ipsum-generator-generator",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Generate a lorem ipsum generator site using Mercury Parser",
   "keywords": [
     "markov",
