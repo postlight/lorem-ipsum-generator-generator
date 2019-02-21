@@ -1,8 +1,13 @@
 {
-  "name": "lorem-ipsum-generator-generator",
-  "version": "1.0.0",
+  "name": "@droob/lorem-ipsum-generator-generator",
+  "version": "1.0.5",
   "description": "Generate a lorem ipsum generator site using Mercury Parser",
-  "main": "index.js",
+  "keywords": [
+    "markov",
+    "lorem ipsum",
+    "netlify",
+    "text"
+  ],
   "bin": {
     "lorem-ipsum-generator-generator": "./cli.js"
   },
@@ -14,6 +19,11 @@
     "url": "git+https://github.com/droob/lorem-ipsum-generator-generator.git"
   },
   "author": "Postlight",
+  "contributors": [
+    { "name": "Drew Bell", "email": "drew.bell@postlight.com" },
+    { "name": "Adam Pash", "email": "adam.pash@postlight.com" },
+    { "name": "Matt Quintanilla", "email": "matt.quintanilla@postlight.com" }
+  ],
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/droob/lorem-ipsum-generator-generator/issues"
@@ -26,5 +36,8 @@
     "inquirer": "^6.2.2",
     "markov": "git+https://git@github.com/postlight/node-markov.git",
     "slugify": "^1.3.4"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
