@@ -1,6 +1,6 @@
 {
   "name": "@droob/lorem-ipsum-generator-generator",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Generate a lorem ipsum generator site using Mercury Parser",
   "keywords": [
     "markov",
@@ -20,9 +20,18 @@
   },
   "author": "Postlight",
   "contributors": [
-    { "name": "Drew Bell", "email": "drew.bell@postlight.com" },
-    { "name": "Adam Pash", "email": "adam.pash@postlight.com" },
-    { "name": "Matt Quintanilla", "email": "matt.quintanilla@postlight.com" }
+    {
+      "name": "Drew Bell",
+      "email": "drew.bell@postlight.com"
+    },
+    {
+      "name": "Adam Pash",
+      "email": "adam.pash@postlight.com"
+    },
+    {
+      "name": "Matt Quintanilla",
+      "email": "matt.quintanilla@postlight.com"
+    }
   ],
   "license": "Apache-2.0",
   "bugs": {

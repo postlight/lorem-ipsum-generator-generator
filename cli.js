@@ -94,10 +94,16 @@ async function askUrls() {
   }
 }
 
-function generate() {
-  var name = slugify(options.name, {lower: true})
-  var root = path.resolve(name)
-  var m    = markov(2)
+async function generate() {
+  var name   = slugify(options.name, {lower: true})
+  var root   = path.resolve(name)
+  var m      = markov(2)
+  var corpus = await fetchText(options.urls)
+
+  if (!corpus) {
+    console.log('Mercury couldn’t find any usable text at your sources.')
+    process.exit()
+  }
 
   if (!fs.existsSync(root)){
     fs.mkdirSync(root);
@@ -113,6 +119,7 @@ function generate() {
     'functions/generate/package.json'
   ]
   files.forEach(f => fs.copyFileSync(path.join(__dirname, f), path.join(root, f)))
+  writeDb(corpus)
 
   var packageJson = {
     name,
@@ -127,12 +134,6 @@ function generate() {
     }
   }
   fs.writeFileSync(path.join(root, 'package.json'), JSON.stringify(packageJson, null, 2))
-
-  Promise.all(options.urls.map(u => {
-    return Mercury.parse(u, {contentType: 'text'}).then(result => {
-      return result.content.trim()
-    })
-  })).then(res => { writeDb(res.join('\n')) })
 
   var index = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8')
   var updatedIndex = index.replace(/My Ipsum/g, options.name)
@@ -163,3 +164,11 @@ function generate() {
   }
 }
 
+async function fetchText(urls = []) {
+  var contents = urls.map(async u => {
+    var res = await Mercury.parse(u, {contentType: 'text'})
+    return res.content.trim()
+  })
+
+  return Promise.all(contents).then(c => c.join(''))
+}
