@@ -20,9 +20,9 @@ var program = new commander.Command('lorem-ipsum-generator-generator')
 
 var options = {
   name:       program.projectName,
-  logo:       program.logo || 'https://placekitten.com/300/300',
-  background: program.background || 'https://placekitten.com/800/600',
-  accent:     program.accent || '#facade',
+  logo:       program.logo,
+  background: program.background,
+  accent:     program.accent,
   urls:       program.args
 }
 
@@ -113,7 +113,6 @@ async function generate() {
   fs.mkdirSync(path.join(root, 'functions/generate'))
 
   var files = [
-    'netlify.toml',
     'postlight-labs.gif',
     'functions/generate/generate.js',
     'functions/generate/package.json'
@@ -127,19 +126,25 @@ async function generate() {
     private: true,
     description: 'A lorem ipsum generator based on text found by Mercury Parser',
     scripts: {
-      deploy: './node_modules/.bin/netlify deploy --prod --open --functions functions'
+      deploy: './node_modules/.bin/netlify deploy --prod --open'
     },
     dependencies: {
-      "netlify-cli": "2.7.4"
+      "netlify-cli": "2.8.0"
     }
   }
   fs.writeFileSync(path.join(root, 'package.json'), JSON.stringify(packageJson, null, 2))
 
   var index = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8')
   var updatedIndex = index.replace(/My Ipsum/g, options.name)
-    .replace(/https:\/\/placekitten\.com\/300\/300/g, options.logo)
-    .replace(/https:\/\/placekitten\.com\/800\/600/g, options.background)
-    .replace(/#facade/g, options.accent)
+  if (options.logo) {
+    updatedIndex = updatedIndex.replace(/<!-- LOGO -->/g, `<img id="logo" src="${options.logo}" alt="" />`)
+  }
+  if (options.background) {
+    updatedIndex = updatedIndex.replace(/dimgray/g, `url('${options.background}')`)
+  }
+  if (options.accent) {
+    updatedIndex = updatedIndex.replace(/#111111/g, options.accent)
+  }
   fs.writeFileSync(path.join(root, 'index.html'), updatedIndex)
 
   process.chdir(root)
