@@ -1,6 +1,6 @@
 {
-  "name": "@droob/lorem-ipsum-generator-generator",
-  "version": "1.0.11",
+  "name": "lorem-ipsum-generator-generator",
+  "version": "1.1.0",
   "description": "Generate a lorem ipsum generator site using Mercury Parser",
   "keywords": [
     "markov",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/droob/lorem-ipsum-generator-generator.git"
+    "url": "git+https://github.com/postlight/lorem-ipsum-generator-generator.git"
   },
   "author": "Postlight",
   "contributors": [
@@ -35,9 +35,9 @@
   ],
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/droob/lorem-ipsum-generator-generator/issues"
+    "url": "https://github.com/postlight/lorem-ipsum-generator-generator/issues"
   },
-  "homepage": "https://github.com/droob/lorem-ipsum-generator-generator#readme",
+  "homepage": "https://github.com/postlight/lorem-ipsum-generator-generator#readme",
   "dependencies": {
     "@postlight/mercury-parser": "^2.0.0",
     "commander": "^2.19.0",
