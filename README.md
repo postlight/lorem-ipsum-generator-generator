@@ -1,4 +1,4 @@
-# lorem-ipsum-generator-generator
+# @postlight/lorem-ipsum-generator-generator
 Generate a lorem ipsum generator site using [Mercury Parser](https://mercury.postlight.com)
 
 ## Before you install
@@ -10,7 +10,7 @@ Generate a lorem ipsum generator site using [Mercury Parser](https://mercury.pos
 ## Installation
 
 ```shell
-$ npx lorem-ipsum-generator-generator
+$ npx @postlight/lorem-ipsum-generator-generator
 ```
 
 and follow the prompts.
@@ -18,7 +18,7 @@ and follow the prompts.
 or
 
 ```shell
-$ npx lorem-ipsum-generator-generator \
+$ npx @postlight/lorem-ipsum-generator-generator \
   http://example.com \
   https://postlight.com/trackchanges/mercury-goes-open-source \
   --project-name "My Ipsum" \
