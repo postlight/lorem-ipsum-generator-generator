@@ -104,10 +104,12 @@ async function generate() {
     process.exit()
   }
 
-  if (!fs.existsSync(root)){
-    fs.mkdirSync(root);
+  if (fs.existsSync(root)) {
+    console.log(`A folder with the name ${name} already exists. We don't want to overwrite that!`)
+    process.exit()
   }
 
+  fs.mkdirSync(root);
   fs.mkdirSync(path.join(root, 'functions'))
   fs.mkdirSync(path.join(root, 'functions/generate'))
 
