@@ -112,7 +112,6 @@ async function generate() {
   fs.mkdirSync(path.join(root, 'functions/generate'))
 
   var files = [
-    'postlight-labs.gif',
     'functions/generate/generate.js',
     'functions/generate/package.json'
   ]
