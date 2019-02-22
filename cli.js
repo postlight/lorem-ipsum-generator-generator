@@ -97,7 +97,6 @@ async function askUrls() {
 async function generate() {
   var name   = slugify(options.name, {lower: true})
   var root   = path.resolve(name)
-  var m      = markov(2)
   var corpus = await fetchText(options.urls)
 
   if (!corpus) {
@@ -151,7 +150,7 @@ async function generate() {
   var npmInstall = spawn.sync('npm', ['install'], { stdio: 'inherit' })
 
   process.chdir(path.join(root, 'functions/generate'))
-  var npmInstall = spawn.sync('npm', ['install'], { stdio: 'inherit' })
+  var npmInstallFunc = spawn.sync('npm', ['install'], { stdio: 'inherit' })
 
   process.chdir(root)
   var netlifyDeploy = spawn.sync(
@@ -163,6 +162,7 @@ async function generate() {
   return true
 
   function writeDb(corpus) {
+    var m = markov(2)
     m.seed(corpus, () => {
       fs.writeFileSync(path.join(root, 'functions/generate/db.json'), JSON.stringify(m.getDb()))
     })
