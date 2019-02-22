@@ -50,19 +50,19 @@ async function ask() {
     {
       type:    'input',
       name:    'logo',
-      message: 'URL of a logo image:',
+      message: '(Optional) URL of a logo image:',
       default: options.logo
     },
     {
       type:    'input',
       name:    'background',
-      message: 'URL of a background image:',
+      message: '(Optional) URL of a background image:',
       default: options.background
     },
     {
       type:    'input',
       name:    'accent',
-      message: 'Accent color (hex, rgb, named color, whatever):',
+      message: '(Optional) Accent color (hex, rgb, named color, whatever):',
       default: options.accent
     }
   ])
