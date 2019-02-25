@@ -28,11 +28,13 @@ $ npx @postlight/lorem-ipsum-generator-generator \
 ```
 
 The generator will create a folder for your project, install the necessary node
-packages, and kick off `netlify-cli` to deploy it to the web. The first time you use the
-generator, you'll be asked to authorize it to connect to your Netlify account.
+packages, and kick off `netlify-cli` to deploy it to the web. The first time you
+use the generator, you'll be asked to authorize it to connect to your Netlify
+account.
 
-If you're not connecting it to an existing Netlify site, feel free to accept all
-the defaults (everything can be changed later in Netlify's site settings pages).
+If you're not connecting it to an existing Netlify site, choose `Create &
+configure a new site`, and feel free to accept the defaults for the rest of the
+propmpts (everything can be changed later in Netlify's site settings pages).
 
 Once the deploy succeeds, your new lorem ipsum generator will open in your
 default browser. Enjoy!
@@ -48,7 +50,7 @@ It accepts URL parameters for the number of paragraphs:
 ...or the number of words to return in a single paragraph:
 `https://fyreipsum.com/.netlify/functions/generate?words=25`
 
-and returns a JSON object with an array of paragraphs under the key `paragraphs`. 
+and returns a JSON object with an array of paragraphs under the key `paragraphs`.
 
 ## Customization
 
@@ -57,8 +59,8 @@ behavior live in your site directory's `index.html`, including some social meta
 tags you can update if you wire up your site to a domain name.
 
 The Netlify function that generates the lorem ipsum text is created in the
-`functions/generate` folder. It's small and easy to change, if you want different
-defaults!
+`functions/generate` folder. It's small and easy to change, if you want
+different defaults!
 
 To re-deploy after your customizations, run `npm run deploy`.
 
