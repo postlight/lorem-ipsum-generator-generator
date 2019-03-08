@@ -130,7 +130,7 @@ async function generate() {
       deploy: './node_modules/.bin/netlify deploy --prod --open'
     },
     dependencies: {
-      "netlify-cli": "2.8.0"
+      "netlify-cli": "2.8.3"
     }
   }
   fs.writeFileSync(path.join(root, 'package.json'), JSON.stringify(packageJson, null, 2))
