@@ -64,3 +64,6 @@ different defaults!
 
 To re-deploy after your customizations, run `npm run deploy`.
 
+---
+🔬 A Labs project from your friends at [Postlight](https://postlight.com/labs)
+
