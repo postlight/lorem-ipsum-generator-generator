@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/postlight/lorem-ipsum-generator-generator#readme",
   "dependencies": {
-    "@postlight/mercury-parser": "^2.0.0",
+    "@postlight/mercury-parser": "^2.1.0",
     "commander": "^2.19.0",
     "cross-spawn": "^6.0.5",
     "inquirer": "^6.2.2",
