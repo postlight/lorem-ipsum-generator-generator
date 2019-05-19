@@ -1,6 +1,6 @@
 # Lorem Ipsum Generator Generator
 
-[Postlight](https://postlight.com)'s Lorem Ipsum Generator Generator creates a lorem ipsum generator site from any content on the web using [Mercury Parser](https://mercury.postlight.com).
+[Postlight](https://postlight.com)'s Lorem Ipsum Generator Generator creates a lorem ipsum generator site from any content on the web using [Mercury Parser](https://mercury.postlight.com). Read all about it in [this handy introduction](https://postlight.com/trackchanges/introducing-postlights-lorem-ipsum-generator-generator).
 
 ## Before you install
 
