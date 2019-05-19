@@ -1,5 +1,6 @@
-# @postlight/lorem-ipsum-generator-generator
-Generate a lorem ipsum generator site using [Mercury Parser](https://mercury.postlight.com)
+# Lorem Ipsum Generator Generator
+
+[Postlight](https://postlight.com)'s Lorem Ipsum Generator Generator creates a lorem ipsum generator site from any content on the web using [Mercury Parser](https://mercury.postlight.com).
 
 ## Before you install
 
@@ -82,5 +83,6 @@ submitted for inclusion in the work, as defined in the Apache-2.0 license,
 shall be dual licensed as above without any additional terms or conditions.
 
 ---
-🔬 A Labs project from your friends at [Postlight](https://postlight.com/labs)
+
+🔬 A Labs project from your friends at [Postlight](https://postlight.com). Happy coding!
 
