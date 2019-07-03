@@ -27,7 +27,7 @@
         margin: 0;
         padding: 74px 0 0;
         box-sizing: border-box;
-        background: dimgray; 
+        background: dimgray;
         background-attachment: fixed;
         background-size: cover;
         display: flex;
@@ -92,7 +92,7 @@
         align-items: center;
         padding-bottom: 18px;
         margin-bottom: 21px;
-        border-bottom: 1px solid var(--primary-color); 
+        border-bottom: 1px solid var(--primary-color);
         text-align: left;
       }
       form {
@@ -302,11 +302,12 @@
       document.getElementById('refresh').onclick = fetchMore
       document.getElementById('expand').onclick  = toggleExpanded
       document.getElementById('copy').addEventListener('click', function(event) {
-        var range = document.createRange()
-        range.selectNode(document.getElementById('ipsum'))
-        window.getSelection().addRange(range)
-
         try {
+          var range = document.createRange()
+          range.selectNode(document.getElementById('ipsum'))
+          var selection = window.getSelection()
+          selection.removeAllRanges()
+          selection.addRange(range)
           var successful = document.execCommand('copy')
           if (successful) {
             document.getElementById('copy').innerText = "Copied!"
