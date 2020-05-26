@@ -174,7 +174,7 @@ async function generate() {
 async function fetchText(urls = []) {
   var contents = urls.map(async u => {
     var res = await Mercury.parse(u, {contentType: 'text'})
-    return res.content.trim()
+    return (res.content || '').trim()
   })
 
   return Promise.all(contents).then(c => c.join(''))
